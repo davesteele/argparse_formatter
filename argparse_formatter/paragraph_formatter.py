@@ -22,7 +22,7 @@ class ParagraphFormatter(HelpFormatter):
 
     def _fill_text(self, text, width, indent):
         formatted = []
-        for paragraph in re.split(self.psep_re, text):
+        for paragraph in re.split(self.psep_re, text, re.ASCII):
             paragraph = self._whitespace_matcher.sub(" ", paragraph).strip()
             formatted.append(
                 textwrap.fill(
@@ -37,7 +37,7 @@ class ParagraphFormatter(HelpFormatter):
 
     def _split_lines(self, text, width):
         formatted = []
-        for paragraph in re.split(self.psep_re, text):
+        for paragraph in re.split(self.psep_re, text, flags=re.ASCII):
             paragraph = self._whitespace_matcher.sub(" ", paragraph).strip()
             if formatted:
                 formatted.append("")
