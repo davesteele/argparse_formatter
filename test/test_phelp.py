@@ -22,11 +22,11 @@ liney_text = "this is wordy text. \n" * 5
 
 help_dict = {
     # detect two normal paragraphs
-    "w": "{0}\n\n{0}".format(wordy_text),
+    "wordy": "{0}\n\n{0}".format(wordy_text),
     # ignore single lfs in the text
-    "l": "{0}\n\n{0}".format(liney_text),
-    # tolerate blank lines includeing white space
-    "s": "{0}\n  \n{0}".format(wordy_text),
+    "liney": "{0}\n\n{0}".format(liney_text),
+    # tolerate blank lines including white space
+    "spacey": "{0}\n  \n{0}".format(wordy_text),
 }
 
 
@@ -41,10 +41,6 @@ def helpstr(request):
     return request.param
 
 
-def test_namedstring(helpstr):
-    assert help_dict[helpstr.name] == helpstr.string
-
-
 @pytest.fixture(params=[Formatter(x, y) for (x, y) in formatter_dict.items()])
 def formatter(request):
     return request.param
@@ -52,22 +48,17 @@ def formatter(request):
 
 @pytest.fixture()
 def testcase(helpstr, formatter):
-    case_name = formatter.name
-    case_file = case_name + ".ref"
-
-    data_file_path = data_path / case_file
-
     parser = argparse.ArgumentParser(
         prog="foo", epilog=helpstr.string, formatter_class=formatter.obj
     )
     parser.add_argument("-foo", help=helpstr.string)
-
     test_text = parser.format_help()
 
+    data_file_path = data_path / (formatter.name + ".ref")
     # The lazy man's way to create reference data
     # data_file_path.write_text(test_text)
 
-    return Case(case_name, test_text, data_file_path.read_text())
+    return Case(formatter.name, test_text, data_file_path.read_text())
 
 
 def test_case(testcase):
