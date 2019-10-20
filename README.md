@@ -79,6 +79,6 @@ demonstrates the effect of using the ParagraphFormatter:
 Install
 -------
 
-Install from [PyPi](https://pypi.org/project/argparse-paragraph/) with:
+Install from [PyPi](https://pypi.org/project/argparse-formatter/) with:
 
-    pip install argparse-paragraph
+    pip install argparse-formatter
