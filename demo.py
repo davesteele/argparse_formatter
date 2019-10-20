@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import argparse
 from argparse_paragraph import ParagraphFormatter
 
@@ -5,6 +7,7 @@ test_cases = (
     ("Default", argparse.HelpFormatter),
     ("Paragraph", ParagraphFormatter),
 )
+
 
 def argparse_demo(formatter):
     parser = argparse.ArgumentParser(
@@ -28,6 +31,7 @@ def argparse_demo(formatter):
     )
 
     return parser.format_help()
+
 
 for (name, formatter) in test_cases:
     print("*************************")

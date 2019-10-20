@@ -2,6 +2,7 @@ from argparse import HelpFormatter
 import re
 import textwrap
 
+
 class ParagraphFormatter(HelpFormatter):
     """
     An argparse formatter that preserves paragraphs
@@ -15,7 +16,6 @@ class ParagraphFormatter(HelpFormatter):
 
     def _fill_text(self, text, width, indent):
         formatted = []
-        #for paragraph in text.split(self.psep):
         for paragraph in re.split(self.psepre, text):
             paragraph = self._whitespace_matcher.sub(" ", paragraph).strip()
             formatted.append(
