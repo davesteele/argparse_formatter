@@ -9,7 +9,7 @@ from collections import namedtuple
 from pathlib import Path
 import pytest
 
-from argparse_paragraph import ParagraphFormatter
+from argparse_formatter import ParagraphFormatter
 
 NamedString = namedtuple("NamedString", ["name", "string"])
 Case = namedtuple("Case", ["name", "result", "ref"])

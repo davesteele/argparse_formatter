@@ -29,8 +29,8 @@ will be preserved. Word wrapping will be performed within the paragraphs.
 Note that **ParagraphFormatter** is implemented by overriding two private
 methods in the default **argparse** formatter, and that the internals of that
 class are not considered part of the **argparse** API. There is therefore a
-risk that the code may break with a future standard library release. The module
-has been tested across Python versions.
+small risk that the code may break with a future standard library release. The
+module has been tested across Python versions.
 
 
 Demo

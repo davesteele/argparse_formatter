@@ -12,9 +12,9 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="argparse_paragraph",
+    name="argparse_formatter",
     version="1.0",
-    packages=["argparse_paragraph"],
+    packages=["argparse_formatter"],
     url="https://github.com/davesteele/argparse_formatter",
     license="GPL 2.0",
     author="David Steele",
