@@ -1,4 +1,4 @@
- 
+[![Build Status](https://travis-ci.org/davesteele/argparse_formatter.svg?branch=master)](https://travis-ci.org/davesteele/argparse_formatter) 
 
 Argparse Paragraph Formatter
 ============================
