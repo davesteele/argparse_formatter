@@ -6,7 +6,7 @@
 #
 
 import argparse
-from argparse_paragraph import ParagraphFormatter
+from argparse_formatter import ParagraphFormatter
 
 test_cases = (
     ("Default", argparse.HelpFormatter),
