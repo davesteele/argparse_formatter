@@ -1,3 +1,9 @@
+# Copyright (c) 2019 David Steele <dsteele@gmail.com>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+# License-Filename: LICENSE
+#
+
 import argparse
 from collections import namedtuple
 from pathlib import Path
