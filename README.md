@@ -36,7 +36,9 @@ has been tested across Python versions.
 Demo
 ----
 
-The script *demo.py* demostrates the effect of using the ParagraphFormatter:
+The script
+[*demo.py*](https://github.com/davesteele/argparse_formatter/blob/master/demo.py)
+demonstrates the effect of using the ParagraphFormatter:
 
 
     # ./demo.py
