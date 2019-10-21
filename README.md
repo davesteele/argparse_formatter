@@ -3,7 +3,7 @@
 Argparse Paragraph Formatter
 ============================
 
-This project is a Python module that provides an
+This project is a simple Python module that provides an
 [**argparse**](https://docs.python.org/3/library/argparse.html) formatter that
 preserves paragraphs in help and epilog text.
 
@@ -31,6 +31,11 @@ methods in the default **argparse** formatter, and that the internals of that
 class are not considered part of the **argparse** API. There is therefore a
 small risk that the code may break with a future standard library release. The
 module has been tested across all supported Python 3 versions.
+
+As it turns out, this is a more primitive version of a rich formatter that has
+been [long proposed](https://bugs.python.org/issue12806) for inclusion in
+Python. It would be good for that formatter to be merged - it eliminates the
+API-migration risk.
 
 
 Demo
