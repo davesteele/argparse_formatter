@@ -8,4 +8,4 @@ python:
 install:
         pip install setuptools codecov
 script:
-        python setup.py test; codecov
+        py.test --cov-report term --cov=argparse-formatter; codecov
