@@ -17,12 +17,12 @@ class ParagraphFormatter(HelpFormatter):
 
     def __init__(self, *args, **kwargs):
         self.psep = "\n\n"
-        self.psep_re = "\n\\s*\n"
+        self.psep_re = re.compile(r"\n\s*\n", flags=re.ASCII)
         super().__init__(*args, **kwargs)
 
     def _fill_text(self, text, width, indent):
         formatted = []
-        for paragraph in re.split(self.psep_re, text, re.ASCII):
+        for paragraph in self.psep_re.split(text):
             paragraph = self._whitespace_matcher.sub(" ", paragraph).strip()
             formatted.append(
                 textwrap.fill(
@@ -37,7 +37,7 @@ class ParagraphFormatter(HelpFormatter):
 
     def _split_lines(self, text, width):
         formatted = []
-        for paragraph in re.split(self.psep_re, text, flags=re.ASCII):
+        for paragraph in self.psep_re.split(text):
             paragraph = self._whitespace_matcher.sub(" ", paragraph).strip()
             if formatted:
                 formatted.append("")
