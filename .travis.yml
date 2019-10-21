@@ -6,6 +6,6 @@ python:
         - "3.8-dev"
         - "nightly"
 install:
-        pip install setuptools
+        pip install setuptools codecov
 script:
-        python setup.py test
+        python setup.py test; codecov
