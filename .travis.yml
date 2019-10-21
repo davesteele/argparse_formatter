@@ -6,6 +6,6 @@ python:
         - "3.8-dev"
         - "nightly"
 install:
-        pip install setuptools codecov
+        pip install setuptools codecov pytest-cov pytest
 script:
-        py.test --cov-report term --cov=argparse-formatter; codecov
+        py.test --cov-report term --cov=argparse_formatter; codecov
