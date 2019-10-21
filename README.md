@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/davesteele/argparse_formatter.svg?branch=master)](https://travis-ci.org/davesteele/argparse_formatter) 
+[![Build Status](https://travis-ci.org/davesteele/argparse_formatter.svg?branch=master)](https://travis-ci.org/davesteele/argparse_formatter)
+[![Coverage](https://codecov.io/gh/davesteele/argparse_formatter/branch/master/graph/badge.svg)](https://codecov.io/gh/davesteele/argparse_formatter/branch/master) 
+
 
 Argparse Paragraph Formatter
 ============================
