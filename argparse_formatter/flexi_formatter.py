@@ -57,7 +57,7 @@ class FlexiFormatter(argparse.RawTextHelpFormatter):
         return "\n".join(lines)
 
     def _para_reformat(self, text, width):
-        text = textwrap.dedent(text)
+        text = textwrap.dedent(text).strip()
 
         lines = list()
         main_indent = len(re.match(r"( *)", text).group(1))
