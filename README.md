@@ -41,7 +41,7 @@ The FlexiFormatter
 
 As it turns out, **ParagraphFormatter** is a more primitive version of a rich
 formatter that has been [long proposed](https://bugs.python.org/issue12806)
-for inclusion in Python. 
+for inclusion in Python.
 
 This module provides that **FlexiFormatter** class, with some modifications.
 This formatter preserves line feeds and indentation, and understands bullet
