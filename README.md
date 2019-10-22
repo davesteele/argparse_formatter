@@ -5,9 +5,9 @@
 Argparse Paragraph Formatter
 ============================
 
-This project is a simple Python module that provides an
-[**argparse**](https://docs.python.org/3/library/argparse.html) formatter that
-preserves paragraphs in help and epilog text.
+This project is a simple Python module that provides
+[**argparse**](https://docs.python.org/3/library/argparse.html) formatters
+that support more flexibility in the display of help and epilog text.
 
 Background
 ----------
@@ -18,7 +18,8 @@ This causes all text to be transformed into a single paragraph.
 
 There are optional **RawDescriptionHelpFormatter** and
 **RawTextHelpFormatter** classes that can be used to preserve paragraphs, but
-they do not perform any word wrapping.
+they do not perform any word wrapping. What is needed are formatters that
+support more flexibility while still providing word wrapping.
 
 The ParagraphFormatter
 ----------------------
@@ -34,11 +35,20 @@ class are not considered part of the **argparse** API. There is therefore a
 small risk that the code may break with a future standard library release. The
 module has been tested across all supported Python 3 versions.
 
-As it turns out, this is a more primitive version of a rich formatter that has
-been [long proposed](https://bugs.python.org/issue12806) for inclusion in
-Python. It would be good for that formatter to be merged - it eliminates the
-API-migration risk.
 
+The FlexiFormatter
+------------------
+
+As it turns out, **ParagraphFormatter** is a more primitive version of a rich
+formatter that has been [long proposed](https://bugs.python.org/issue12806)
+for inclusion in Python. 
+
+This module provides that **FlexiFormatter** class, with some modifications.
+This formatter preserves line feeds and indentation, and understands bullet
+lists.
+
+It would be good for this formatter to be merged - it eliminates the
+API-migration risk.
 
 Demo
 ----
@@ -82,6 +92,50 @@ demonstrates the effect of using the ParagraphFormatter:
     being visually broken up into pieces.
     
     It sure would be nice if it was represented that way.
+
+The [*flexidemo.py*](https://github.com/davesteele/argparse_formatter/blob/master/flexidemo.py)
+script shows the output for **FlexiFormatter**
+
+    *************************
+    Using the Default formatter
+    *************************
+    
+    usage: flexidemo.py [-h] [--arg ARG]
+    
+    optional arguments:
+      -h, --help  show this help message and exit
+      --arg ARG   This same feature would be useful for arguments that would
+                  benefit from more explanation. 1. It looks nicer 2. It is easier
+                  to read, even if some of the bullets get to be a little long.
+    
+    This is a multi-paragraph epilog. It is presenting data that would benefit by
+    being visually broken up into pieces. It sure would be nice if it was
+    represented that way.
+    
+    
+    *************************
+    Using the Flexi formatter
+    *************************
+    
+    usage: flexidemo.py [-h] [--arg ARG]
+    
+    optional arguments:
+      -h, --help  show this help message and exit
+      --arg ARG    
+                              This same feature would be useful for arguments that
+                              would benefit
+                              from more explanation.
+                   
+                                1. It looks nicer
+                                2. It is easier to read, even if some of the
+                                   bullets get to be a little long.
+                   
+    
+    This is a multi-paragraph epilog. It is presenting data that would benefit by
+    being visually broken up into pieces.
+    
+    It sure would be nice if it was represented that way.
+
 
 Install
 -------
