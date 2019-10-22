@@ -17,10 +17,14 @@ test_cases = (
 def argparse_demo(formatter):
     parser = argparse.ArgumentParser(
         epilog="""
-            This is a multi-paragraph epilog. It is presenting data that would
+            This is a multi-paragraph epilog. It is presenting data that would \
             benefit by being visually broken up into pieces.
 
             It sure would be nice if it was represented that way.
+
+              1. This is a pretty long line, in a bullet list - getting longer \
+                 and longer and longer
+              2. this isn't
             """,
         formatter_class=formatter,
     )
@@ -28,7 +32,7 @@ def argparse_demo(formatter):
     parser.add_argument(
         "--arg",
         help="""
-            This same feature would be useful for arguments that would benefit
+            This same feature would be useful for arguments that would benefit \
             from more explanation.
 
               1. It looks nicer
