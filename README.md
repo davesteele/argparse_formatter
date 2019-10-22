@@ -57,7 +57,6 @@ The script
 [*demo.py*](https://github.com/davesteele/argparse_formatter/blob/master/demo.py)
 demonstrates the effect of using the ParagraphFormatter:
 
-
     # ./demo.py
     *************************
     Using the Default formatter
@@ -96,6 +95,7 @@ demonstrates the effect of using the ParagraphFormatter:
 The [*flexidemo.py*](https://github.com/davesteele/argparse_formatter/blob/master/flexidemo.py)
 script shows the output for **FlexiFormatter**
 
+
     *************************
     Using the Default formatter
     *************************
@@ -110,7 +110,8 @@ script shows the output for **FlexiFormatter**
     
     This is a multi-paragraph epilog. It is presenting data that would benefit by
     being visually broken up into pieces. It sure would be nice if it was
-    represented that way.
+    represented that way. 1. This is a pretty long line, in a bullet list -
+    getting longer and longer and longer 2. this isn't
     
     
     *************************
