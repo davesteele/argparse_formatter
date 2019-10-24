@@ -47,6 +47,9 @@ This module provides that **FlexiFormatter** class, with some modifications.
 This formatter preserves line feeds and indentation, and understands bullet
 lists.
 
+This formatter requires that lines within a single paragraph or bullet item be
+separated by an escaped line feed.
+
 It would be good for this formatter to be merged - it eliminates the
 API-migration risk.
 
