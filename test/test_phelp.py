@@ -8,6 +8,7 @@ import argparse
 from collections import namedtuple
 from pathlib import Path
 import pytest
+import textwrap
 
 from argparse_formatter import ParagraphFormatter, FlexiFormatter
 
@@ -68,3 +69,31 @@ def test_case(testcase):
 
     print(testcase.result)
     assert testcase.result == testcase.ref
+
+SimpleCase = namedtuple("SimpleCase", ["width", "input", "out"])
+
+
+@pytest.mark.parametrize(
+    "case",
+    [
+        SimpleCase(
+            10,
+            """
+                base text
+                  1. text to wrap
+            """,
+            textwrap.dedent(
+            """
+                base text
+                  1. text
+                     to
+                     wrap
+            """
+            ).strip()
+        )
+    ]
+)
+def test_flexi_para_reformat(case):
+    out = "\n".join(FlexiFormatter("foo")._para_reformat(case.input, case.width))
+    print(out)
+    assert case.out == out
