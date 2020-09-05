@@ -64,9 +64,6 @@ def testcase(helpstr, formatter):
 
 
 def test_case(testcase):
-    if (testcase.formatter_name, testcase.text_name) == ("flexi", "liney"):
-        pytest.skip("Flexi handles liney text differently")
-
     print(testcase.result)
     assert testcase.result == testcase.ref
 

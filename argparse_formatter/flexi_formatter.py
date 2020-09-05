@@ -3,47 +3,9 @@ import re
 import textwrap
 
 
-class FlexiFormatter(argparse.RawTextHelpFormatter):
-    """FlexiFormatter which respects new line formatting and wraps the rest
-    
-    Example:
-        >>> parser = argparse.ArgumentParser(formatter_class=FlexiFormatter)
-        >>> parser.add_argument('--example', help='''\
-        ...     This argument's help text will have this first long line\
-        ...     wrapped to fit the target window size so that your text\
-        ...     remains flexible.
-        ...
-        ...         1. This option list
-        ...         2. is still persisted
-        ...         3. and the option strings get wrapped like this with an\
-        ...            indent for readability.
-        ...
-        ...     You must use backslashes at the end of lines to indicate that\
-        ...     you want the text to wrap instead of preserving the newline.
-        ...    
-        ...     As with docstrings, the leading space to the text block is\
-        ...     ignored.
-        ... ''')
-        >>> parser.parse_args(['-h'])
-        usage: argparse_formatter.py [-h] [--example EXAMPLE]
+class FlexiHelpFormatter(argparse.RawTextHelpFormatter):
+    """Help message formatter which respects paragraphs and bulleted lists.
 
-        optional arguments:
-          -h, --help         show this help message and exit
-          --example EXAMPLE  This argument's help text will have this first
-                             long line wrapped to fit the target window size
-                             so that your text remains flexible.
-
-                                 1. This option list
-                                 2. is still persisted
-                                 3. and the option strings get wrapped like
-                                    this with an indent for readability.
-
-                             You must use backslashes at the end of lines to
-                             indicate that you want the text to wrap instead
-                             of preserving the newline.
-
-                             As with docstrings, the leading space to the
-                             text block is ignored.
 
     Only the name of this class is considered a public API. All the methods
     provided by the class are considered an implementation detail.
@@ -56,33 +18,63 @@ class FlexiFormatter(argparse.RawTextHelpFormatter):
         lines = self._para_reformat(text, width)
         return "\n".join(lines)
 
-    def _para_reformat(self, text, width):
+    def _indents(self, line):
+        """Return line indent level and "sub_indent" for bullet list text."""
+
+        indent = len(re.match(r"( *)", line).group(1))
+        list_match = re.match(r"( *)(([*-+>]+|\w+\)|\w+\.) +)", line)
+        if list_match:
+            sub_indent = indent + len(list_match.group(2))
+        else:
+            sub_indent = indent
+
+        return (indent, sub_indent)
+
+    def _split_paragraphs(self, text):
+        """Split text in to paragraphs of like-indented lines."""
+
         text = textwrap.dedent(text).strip()
+        text = re.sub("\n\n[\n]+", "\n\n", text)
 
-        lines = list()
-        main_indent = len(re.match(r"( *)", text).group(1))
-        # Wrap each line individually to allow for partial formatting
+        last_sub_indent = None
+        paragraphs = list()
         for line in text.splitlines():
+            (indent, sub_indent) = self._indents(line)
+            is_text = re.search(r"[^\s]", line) != None
 
-            # Get this line's indent and figure out what indent to use
-            # if the line wraps. Account for lists of small variety.
-            indent = len(re.match(r"( *)", line).group(1))
-            list_match = re.match(r"( *)(([*-+>]+|\w+\)|\w+\.) +)", line)
-            if list_match:
-                sub_indent = indent + len(list_match.group(2))
+            if is_text and indent == sub_indent == last_sub_indent:
+                paragraphs[-1] += line
             else:
-                sub_indent = indent
+                paragraphs.append(line)
 
-            # Textwrap will do all the hard work for us
-            line = self._whitespace_matcher.sub(" ", line).strip()
-            new_lines = textwrap.wrap(
-                text=line,
+            if is_text:
+                last_sub_indent = sub_indent
+            else:
+                last_sub_indent = None
+
+        return paragraphs
+
+    def _para_reformat(self, text, width):
+        """Reformat text, by paragraph."""
+
+        paragraphs = list()
+        for paragraph in self._split_paragraphs(text):
+
+            (indent, sub_indent) = self._indents(paragraph)
+
+            paragraph = self._whitespace_matcher.sub(" ", paragraph).strip()
+            new_paragraphs = textwrap.wrap(
+                text=paragraph,
                 width=width,
-                initial_indent=" " * (indent - main_indent),
-                subsequent_indent=" " * (sub_indent - main_indent),
+                initial_indent=" " * indent,
+                subsequent_indent=" " * sub_indent,
             )
 
             # Blank lines get eaten by textwrap, put it back with [' ']
-            lines.extend(new_lines or [" "])
+            paragraphs.extend(new_paragraphs or [" "])
 
-        return lines
+        return paragraphs
+
+
+class FlexiFormatter(FlexiHelpFormatter):
+    pass
