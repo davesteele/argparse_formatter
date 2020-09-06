@@ -1,11 +1,9 @@
 import argparse
 import re
-import textwrap
 
 
 class FlexiHelpFormatter(argparse.RawTextHelpFormatter):
     """Help message formatter which respects paragraphs and bulleted lists.
-
 
     Only the name of this class is considered a public API. All the methods
     provided by the class are considered an implementation detail.
@@ -33,6 +31,8 @@ class FlexiHelpFormatter(argparse.RawTextHelpFormatter):
     def _split_paragraphs(self, text):
         """Split text in to paragraphs of like-indented lines."""
 
+        import textwrap
+
         text = textwrap.dedent(text).strip()
         text = re.sub("\n\n[\n]+", "\n\n", text)
 
@@ -56,6 +56,8 @@ class FlexiHelpFormatter(argparse.RawTextHelpFormatter):
 
     def _para_reformat(self, text, width):
         """Reformat text, by paragraph."""
+
+        import textwrap
 
         paragraphs = list()
         for paragraph in self._split_paragraphs(text):
