@@ -1,5 +1,5 @@
 import argparse
-import re
+import re as _re
 
 
 class FlexiHelpFormatter(argparse.RawTextHelpFormatter):
@@ -19,8 +19,8 @@ class FlexiHelpFormatter(argparse.RawTextHelpFormatter):
     def _indents(self, line):
         """Return line indent level and "sub_indent" for bullet list text."""
 
-        indent = len(re.match(r"( *)", line).group(1))
-        list_match = re.match(r"( *)(([*-+>]+|\w+\)|\w+\.) +)", line)
+        indent = len(_re.match(r"( *)", line).group(1))
+        list_match = _re.match(r"( *)(([*-+>]+|\w+\)|\w+\.) +)", line)
         if list_match:
             sub_indent = indent + len(list_match.group(2))
         else:
@@ -34,13 +34,13 @@ class FlexiHelpFormatter(argparse.RawTextHelpFormatter):
         import textwrap
 
         text = textwrap.dedent(text).strip()
-        text = re.sub("\n\n[\n]+", "\n\n", text)
+        text = _re.sub("\n\n[\n]+", "\n\n", text)
 
         last_sub_indent = None
         paragraphs = list()
         for line in text.splitlines():
             (indent, sub_indent) = self._indents(line)
-            is_text = re.search(r"[^\s]", line) != None
+            is_text = _re.search(r"[^\s]", line) != None
 
             if is_text and indent == sub_indent == last_sub_indent:
                 paragraphs[-1] += line
