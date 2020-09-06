@@ -1,8 +1,8 @@
-import argparse
 import re as _re
+from argparse import RawTextHelpFormatter
 
 
-class FlexiHelpFormatter(argparse.RawTextHelpFormatter):
+class FlexiHelpFormatter(RawTextHelpFormatter):
     """Help message formatter which respects paragraphs and bulleted lists.
 
     Only the name of this class is considered a public API. All the methods
