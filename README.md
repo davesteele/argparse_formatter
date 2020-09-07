@@ -50,6 +50,8 @@ lists.
 This formatter requires that lines within a single paragraph or bullet item be
 separated by an escaped line feed.
 
+FlexiFormatter has been submitted for inclusion in Python3.9 - 
+[PR22129](https://github.com/python/cpython/pull/22129).
 It would be good for this formatter to be merged - it eliminates the
 API-migration risk.
 
