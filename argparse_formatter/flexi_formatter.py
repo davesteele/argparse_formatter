@@ -43,7 +43,7 @@ class FlexiHelpFormatter(RawTextHelpFormatter):
             is_text = _re.search(r"[^\s]", line) != None
 
             if is_text and indent == sub_indent == last_sub_indent:
-                paragraphs[-1] += line
+                paragraphs[-1] += " " + line
             else:
                 paragraphs.append(line)
 
