@@ -7,7 +7,8 @@ Argparse Paragraph Formatter
 
 This project is a simple Python module that provides
 [**argparse**](https://docs.python.org/3/library/argparse.html) formatters
-that support more flexibility in the display of help and epilog text.
+that support more flexibility in the display of description, help, and epilog
+text.
 
 Background
 ----------
