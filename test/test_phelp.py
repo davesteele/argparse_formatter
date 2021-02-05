@@ -87,6 +87,21 @@ SimpleCase = namedtuple("SimpleCase", ["width", "input", "out"])
                      wrap
             """
             ).strip()
+        ),
+        SimpleCase(
+            10,
+            """
+                base text
+                  - text to wrap
+            """,
+            textwrap.dedent(
+            """
+                base text
+                  - text
+                    to
+                    wrap
+            """
+            ).strip()
         )
     ]
 )
