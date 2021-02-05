@@ -13,7 +13,7 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="argparse_formatter",
-    version="1.3",
+    version="1.4",
     packages=["argparse_formatter"],
     url="https://github.com/davesteele/argparse_formatter",
     license="GPL 2.0",
