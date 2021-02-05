@@ -5,10 +5,11 @@
 #
 
 import argparse
+import pytest
+import re
+import textwrap
 from collections import namedtuple
 from pathlib import Path
-import pytest
-import textwrap
 
 from argparse_formatter import ParagraphFormatter, FlexiFormatter
 
@@ -102,6 +103,21 @@ SimpleCase = namedtuple("SimpleCase", ["width", "input", "out"])
                     wrap
             """
             ).strip()
+        ),
+        SimpleCase(
+            10,
+            """
+                base text
+                  1. text to wrap
+            """,
+            textwrap.dedent(
+            """
+                base text
+                  1. text
+                     to
+                     wrap
+            """
+            ).strip()
         )
     ]
 )
@@ -109,3 +125,39 @@ def test_flexi_para_reformat(case):
     out = "\n".join(FlexiFormatter("foo")._para_reformat(case.input, case.width))
     print(out)
     assert case.out == out
+
+
+bullet_template = SimpleCase(
+    10,
+    """
+        base text
+          - text to wrap
+    """,
+    textwrap.dedent(
+    """
+        base text
+          - text
+            to
+            wrap
+    """
+    ).strip()
+)
+
+
+@pytest.fixture(params=[x for x in "*-+>"])
+def bullet_case(request):
+    case = SimpleCase(
+        10,
+        re.sub("-", request.param, bullet_template.input),
+        re.sub("-", request.param, bullet_template.out),
+    )
+
+    return case
+
+
+def test_bullet_chars(bullet_case):
+    fmt = FlexiFormatter("foo")
+    lines = fmt._para_reformat(bullet_case.input, bullet_case.width)
+    out = "\n".join(lines)
+    print(out)
+    assert bullet_case.out == out
