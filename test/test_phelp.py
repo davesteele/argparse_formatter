@@ -61,12 +61,15 @@ def testcase(helpstr, formatter):
     # The lazy man's way to create reference data
     # data_file_path.write_text(test_text)
 
-    return Case(formatter.name, helpstr.name, test_text, data_file_path.read_text())
+    return Case(
+        formatter.name, helpstr.name, test_text, data_file_path.read_text()
+    )
 
 
 def test_case(testcase):
     print(testcase.result)
     assert testcase.result == testcase.ref
+
 
 SimpleCase = namedtuple("SimpleCase", ["width", "input", "out"])
 
@@ -81,12 +84,12 @@ SimpleCase = namedtuple("SimpleCase", ["width", "input", "out"])
                   1. text to wrap
             """,
             textwrap.dedent(
-            """
-                base text
-                  1. text
-                     to
-                     wrap
-            """
+                """
+                    base text
+                      1. text
+                         to
+                         wrap
+                """
             ).strip()
         ),
         SimpleCase(
@@ -96,12 +99,12 @@ SimpleCase = namedtuple("SimpleCase", ["width", "input", "out"])
                   - text to wrap
             """,
             textwrap.dedent(
-            """
-                base text
-                  - text
-                    to
-                    wrap
-            """
+                """
+                    base text
+                      - text
+                        to
+                        wrap
+                """
             ).strip()
         ),
         SimpleCase(
@@ -111,18 +114,20 @@ SimpleCase = namedtuple("SimpleCase", ["width", "input", "out"])
                   1. text to wrap
             """,
             textwrap.dedent(
-            """
-                base text
-                  1. text
-                     to
-                     wrap
-            """
+                """
+                    base text
+                      1. text
+                         to
+                         wrap
+                """
             ).strip()
         )
     ]
 )
 def test_flexi_para_reformat(case):
-    out = "\n".join(FlexiFormatter("foo")._para_reformat(case.input, case.width))
+    out = "\n".join(
+        FlexiFormatter("foo")._para_reformat(case.input, case.width)
+    )
     print(out)
     assert case.out == out
 
@@ -134,12 +139,12 @@ bullet_template = SimpleCase(
           - text to wrap
     """,
     textwrap.dedent(
-    """
-        base text
-          - text
-            to
-            wrap
-    """
+        """
+            base text
+              - text
+                to
+                wrap
+        """
     ).strip()
 )
 

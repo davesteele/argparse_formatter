@@ -40,7 +40,7 @@ class FlexiHelpFormatter(RawTextHelpFormatter):
         paragraphs = list()
         for line in text.splitlines():
             (indent, sub_indent) = self._indents(line)
-            is_text = _re.search(r"[^\s]", line) != None
+            is_text = _re.search(r"[^\s]", line) is not None
 
             if is_text and indent == sub_indent == last_sub_indent:
                 paragraphs[-1] += " " + line

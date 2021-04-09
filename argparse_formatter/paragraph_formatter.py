@@ -26,7 +26,10 @@ class ParagraphFormatter(HelpFormatter):
             paragraph = self._whitespace_matcher.sub(" ", paragraph).strip()
             formatted.append(
                 textwrap.fill(
-                    paragraph, width, initial_indent=indent, subsequent_indent=indent
+                    paragraph,
+                    width,
+                    initial_indent=indent,
+                    subsequent_indent=indent,
                 )
             )
 

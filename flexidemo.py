@@ -37,7 +37,7 @@ def argparse_demo(formatter):
 
               1. It looks nicer
               2. It is easier to read, even if some of the bullets get to be a little long.
-        """,
+        """,  # noqa
     )
 
     return parser.format_help()
