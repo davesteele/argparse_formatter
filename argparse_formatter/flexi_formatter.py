@@ -41,8 +41,9 @@ class FlexiHelpFormatter(RawTextHelpFormatter):
         for line in text.splitlines():
             (indent, sub_indent) = self._indents(line)
             is_text = _re.search(r"[^\s]", line) is not None
+            is_table = _re.search(r"^\s*\|", line) is not None
 
-            if is_text and indent == sub_indent == last_sub_indent:
+            if is_text and (not is_table) and (indent == sub_indent == last_sub_indent):
                 paragraphs[-1] += " " + line
             else:
                 paragraphs.append(line)
@@ -64,7 +65,9 @@ class FlexiHelpFormatter(RawTextHelpFormatter):
 
             (indent, sub_indent) = self._indents(paragraph)
 
-            paragraph = self._whitespace_matcher.sub(" ", paragraph).strip()
+            is_table = paragraph and (_re.search(r"^\s*\|", paragraph) is not None)
+            if not is_table:
+                paragraph = self._whitespace_matcher.sub(" ", paragraph).strip()
             new_paragraphs = textwrap.wrap(
                 text=paragraph,
                 width=width,
