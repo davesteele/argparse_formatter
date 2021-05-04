@@ -32,11 +32,20 @@ def argparse_demo(formatter):
     parser.add_argument(
         "--arg",
         help="""
-            This same feature would be useful for arguments that would benefit
-            from more explanation.
+            This same feature would be useful for arguments that would
+            benefit from
+            more explanation.
 
               1. It looks nicer
               2. It is easier to read, even if some of the bullets get to be a little long.
+              3. Also, there is a table:
+                 | Feature      | ParagraphFormatter | FlexiFormatter |
+                 | :---         | :---:              | :---:          |
+                 | Outputs text |        Yes         |       Yes      |
+                 | Bullets?     |        Yes         |       Yes      |
+                 | Tables       |        No          |       Yes      |
+              4. Bullets can follow tables.
+
         """,  # noqa
     )
 
