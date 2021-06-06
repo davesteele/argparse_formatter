@@ -25,7 +25,7 @@ setup(
     setup_requires=["pytest-runner"],
     tests_require=["pytest"],
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Environment :: Console",
         "License :: OSI Approved :: "
