@@ -1,3 +1,4 @@
+[![PyPI version](https://badge.fury.io/py/argparse-formatter.svg)](https://badge.fury.io/py/argparse-formatter)
 [![Argparse_Formatter Tests](https://github.com/davesteele/argparse_formatter/actions/workflows/test.yml/badge.svg)](https://github.com/davesteele/argparse_formatter/actions/workflows/test.yml)
 [![Coverage](https://codecov.io/gh/davesteele/argparse_formatter/branch/master/graph/badge.svg)](https://codecov.io/gh/davesteele/argparse_formatter/branch/master) 
 
