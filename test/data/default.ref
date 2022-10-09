@@ -1,6 +1,6 @@
 usage: foo [-h] [-foo FOO]
 
-optional arguments:
+options:
   -h, --help  show this help message and exit
   -foo FOO    this is wordy text. this is wordy text. this is wordy text. this
               is wordy text. this is wordy text. this is wordy text. this is
