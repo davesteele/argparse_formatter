@@ -49,6 +49,18 @@ This module provides that **FlexiFormatter** class, with some modifications.
 This formatter preserves line feeds and indentation, and understands bullet
 lists.
 
+Supported list styles are as follows:
+
+```
+    * item
+    - item
+    + item
+    > item
+    A. item
+    1. item
+    key: item
+```
+
 FlexiFormatter has been submitted for inclusion in Python3.9 - 
 [PR22129](https://github.com/python/cpython/pull/22129).
 It would be good for this formatter to be merged - it eliminates the

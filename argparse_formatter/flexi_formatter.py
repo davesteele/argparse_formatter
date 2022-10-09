@@ -1,6 +1,8 @@
 import re as _re
 from argparse import RawTextHelpFormatter
 
+INDENT_MATCH = r"( *)"
+LIST_MATCH = r"( *)(([*\-+>]+|\w+\)|\w\.|\w+\:) +)"
 
 class FlexiHelpFormatter(RawTextHelpFormatter):
     """Help message formatter which respects paragraphs and bulleted lists.
@@ -19,8 +21,8 @@ class FlexiHelpFormatter(RawTextHelpFormatter):
     def _indents(self, line):
         """Return line indent level and "sub_indent" for bullet list text."""
 
-        indent = len(_re.match(r"( *)", line).group(1))
-        list_match = _re.match(r"( *)(([*\-+>]+|\w+\)|\w+\.) +)", line)
+        indent = len(_re.match(INDENT_MATCH, line).group(1))
+        list_match = _re.match(LIST_MATCH, line)
         if list_match:
             sub_indent = indent + len(list_match.group(2))
         else:
