@@ -19,7 +19,7 @@ jobs:
     - name: Install pip dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools codecov pytest-cov pytest
+        pip install setuptools pytest
     - name: Run pytests
       run: |
-        py.test --cov-report term --cov=argparse_formatter; codecov
+        py.test
