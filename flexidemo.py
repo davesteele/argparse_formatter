@@ -35,8 +35,8 @@ def argparse_demo(formatter):
             This same feature would be useful for arguments that would benefit
             from more explanation.
 
-              1. It looks nicer
-              2. It is easier to read, even if some of the bullets get to be a little long.
+              * It looks nicer
+              * It is easier to read, even if some of the bullets get to be a little long.
         """,  # noqa
     )
 
