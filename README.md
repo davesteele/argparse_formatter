@@ -3,13 +3,17 @@
 [![Coverage](https://codecov.io/gh/davesteele/argparse_formatter/branch/master/graph/badge.svg)](https://codecov.io/gh/davesteele/argparse_formatter/branch/master) 
 
 
+12/20/25 - FlexiHelpFormatter is making progress in the review process. I'm
+replacing the formatter code here with that submission, with aliases with the
+old names, for use with older Python versions.
+
+
+
 Argparse Paragraph Formatter
 ============================
 
-This project is a simple Python module that provides
-[**argparse**](https://docs.python.org/3/library/argparse.html) formatters
-that support more flexibility in the display of description, help, and epilog
-text.
+This project is a simple Python module that provides an improved paragraph lovin formatter for 
+[**argparse**](https://docs.python.org/3/library/argparse.html). This formatter respects paragraphs and bullet lists, providing consistent word wrapping.
 
 Background
 ----------
@@ -38,12 +42,8 @@ class are not considered part of the **argparse** API. There is therefore a
 release. The module has been tested across all supported Python 3 versions.
 
 
-The FlexiFormatter
+The ParagraphHelpFormatter
 ------------------
-
-As it turns out, **ParagraphFormatter** is a more primitive version of a rich
-formatter that has been [long proposed](https://bugs.python.org/issue12806)
-for inclusion in Python.
 
 This module provides that **FlexiFormatter** class, with some modifications.
 This formatter preserves line feeds and indentation, and understands bullet
@@ -61,55 +61,14 @@ Supported list styles are as follows:
     key: item
 ```
 
-FlexiFormatter has been submitted for inclusion in Python3.9 - 
+ParagraphHelpFormatter has been submitted for inclusion in Python3.15 - 
 [PR22129](https://github.com/python/cpython/pull/22129).
-It would be good for this formatter to be merged - it eliminates the
-API-migration risk.
 
 Demo
 ----
 
-The script
-[*demo.py*](https://github.com/davesteele/argparse_formatter/blob/master/demo.py)
-demonstrates the effect of using the ParagraphFormatter:
-
-    # ./demo.py
-    *************************
-    Using the Default formatter
-    *************************
-    
-    usage: demo.py [-h] [--arg ARG]
-    
-    optional arguments:
-      -h, --help  show this help message and exit
-      --arg ARG   This same feature would be useful for arguments that would
-                  benefit from more explanation. Wouldn't it?
-    
-    This is a multi-paragraph epilog. It is presenting data that would benefit by
-    being visually broken up into pieces. It sure would be nice if it was
-    represented that way.
-    
-    
-    *************************
-    Using the Paragraph formatter
-    *************************
-    
-    usage: demo.py [-h] [--arg ARG]
-    
-    optional arguments:
-      -h, --help  show this help message and exit
-      --arg ARG   This same feature would be useful for arguments that would
-                  benefit from more explanation.
-              
-                  Wouldn't it?
-    
-    This is a multi-paragraph epilog. It is presenting data that would benefit by
-    being visually broken up into pieces.
-    
-    It sure would be nice if it was represented that way.
-
 The [*flexidemo.py*](https://github.com/davesteele/argparse_formatter/blob/master/flexidemo.py)
-script shows the output for **FlexiFormatter**
+script shows the output for **ParagraphHelpFormatter**
 
 
     *************************
