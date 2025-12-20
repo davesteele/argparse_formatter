@@ -11,7 +11,7 @@ import textwrap
 from collections import namedtuple
 from pathlib import Path
 
-from argparse_formatter import ParagraphFormatter, FlexiFormatter
+from argparse_formatter import ParagraphHelpFormatter
 
 NamedString = namedtuple("NamedString", ["name", "string"])
 Case = namedtuple("Case", ["formatter_name", "text_name", "result", "ref"])
@@ -34,8 +34,7 @@ help_dict = {
 
 formatter_dict = {
     "default": argparse.HelpFormatter,
-    "paragraph": ParagraphFormatter,
-    "flexi": FlexiFormatter,
+    "paragraph": ParagraphHelpFormatter,
 }
 
 
@@ -126,7 +125,7 @@ SimpleCase = namedtuple("SimpleCase", ["width", "input", "out"])
 )
 def test_flexi_para_reformat(case):
     out = "\n".join(
-        FlexiFormatter("foo")._para_reformat(case.input, case.width)
+        ParagraphHelpFormatter("foo")._para_reformat(case.input, case.width)
     )
     print(out)
     assert case.out == out
@@ -161,7 +160,7 @@ def bullet_case(request):
 
 
 def test_bullet_chars(bullet_case):
-    fmt = FlexiFormatter("foo")
+    fmt = ParagraphHelpFormatter("foo")
     lines = fmt._para_reformat(bullet_case.input, bullet_case.width)
     out = "\n".join(lines)
     print(out)
