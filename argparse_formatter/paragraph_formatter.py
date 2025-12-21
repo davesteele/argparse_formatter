@@ -93,7 +93,3 @@ class FlexiHelpFormatter(ParagraphHelpFormatter):
 
 class ParagraphFormatter(ParagraphHelpFormatter):
     pass
-
-class FlexiFormatter(ParagraphHelpFormatter):
-    pass
-

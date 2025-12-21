@@ -5,8 +5,9 @@
 
 12/20/25 - FlexiHelpFormatter is making progress in the review process. I'm
 replacing the formatter code here with that submission, with aliases with the
-old names, for use with older Python versions.
-
+old names, for use with older Python versions. The name has changed to
+ParagraphHelpFormatter. That class has been aliased to all of the old names
+that this module used to reference.
 
 
 Argparse Paragraph Formatter
@@ -27,25 +28,21 @@ There are optional **RawDescriptionHelpFormatter** and
 they do not perform any word wrapping. What is needed are formatters that
 support more flexibility while still providing word wrapping.
 
-The ParagraphFormatter
-----------------------
+The ParagraphHelpFormatter
+--------------------------
 
-This module provides the **ParagraphFormatter** class. If this class is passed
+This module provides the **ParagraphHelpFormatter** class. If this class is passed
 to the **argparse.ArgumentParser** creation call as the *formatter_class*
 argument, then help and epilog paragraphs, separated by single blank lines,
 will be preserved. Word wrapping will be performed within the paragraphs.
 
-Note that **ParagraphFormatter** is implemented by overriding two private
+Note that **ParagraphHelpFormatter** is implemented by overriding two private
 methods in the default **argparse** formatter, and that the internals of that
 class are not considered part of the **argparse** API. There is therefore a
 (vanishingly) small risk that the code may break with a future standard library
 release. The module has been tested across all supported Python 3 versions.
 
-
-The ParagraphHelpFormatter
-------------------
-
-This module provides that **FlexiFormatter** class, with some modifications.
+This module provides that **ParagraphHelpFormatter** class, with some modifications.
 This formatter preserves line feeds and indentation, and understands bullet
 lists.
 
@@ -90,7 +87,7 @@ script shows the output for **ParagraphHelpFormatter**
     
     
     *************************
-    Using the Flexi formatter
+    Using the Paragraph formatter
     *************************
     
     usage: flexidemo.py [-h] [--arg ARG]
