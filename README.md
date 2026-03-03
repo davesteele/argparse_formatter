@@ -3,9 +3,10 @@
 [![Coverage](https://codecov.io/gh/davesteele/argparse_formatter/branch/master/graph/badge.svg)](https://codecov.io/gh/davesteele/argparse_formatter/branch/master) 
 
 
-12/20/25 - FlexiHelpFormatter is making progress in the review process. I'm
-replacing the formatter code here with that submission, with aliases with the
-old names, for use with older Python versions. The name has changed to
+12/20/25 - FlexiHelpFormatter is making
+[progress](https://github.com/python/cpython/pull/22129) in the review process.
+I'm replacing the formatter code here with that submission, with aliases with
+the old names, for use with older Python versions. The name has changed to
 ParagraphHelpFormatter. That class has been aliased to all of the old names
 that this module used to reference.
 
