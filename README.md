@@ -115,6 +115,6 @@ script shows the output for **ParagraphHelpFormatter**
 Install
 -------
 
-Install from [PyPi](https://pypi.org/project/argparse-formatter/) with:
+Install from [PyPI](https://pypi.org/project/argparse-formatter/) with:
 
     pip install argparse-formatter
