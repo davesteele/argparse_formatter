@@ -10,6 +10,8 @@ the old names, for use with older Python versions. The name has changed to
 ParagraphHelpFormatter. That class has been aliased to all of the old names
 that this module used to reference.
 
+5/22/26 - The MR is [declined](https://github.com/python/cpython/pull/22129#issuecomment-4413724429).
+
 
 Argparse Paragraph Formatter
 ============================
