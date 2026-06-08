@@ -1,0 +1,72 @@
+# Copyright (c) 2026 David Steele <dsteele@gmail.com>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+# License-Filename: LICENSE
+#
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "argparse_formatter"
+version = "1.5"
+description = "Paragraph-preserving formatter for argparse"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [ { name = "David Steele", email = "dsteele@gmail.com" } ]
+keywords = [ "formatter", "argparse" ]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Environment :: Console",
+    "License :: OSI Approved :: ",
+    "GNU General Public License v2 or later (GPLv2+)",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development :: User Interfaces",
+]
+
+[project.optional-depencies]
+test = [
+    "pytest",
+]
+
+[project.urls]
+Homepage = "https://github.com/davesteele/argparse_formatter/"
+Source = "https://github.com/davesteele/argparse_formatter.git"
+Issues = "https://github.com/davesteele/argparse_formatter/issues"
+Changelog = "https://github.com/davesteele/pwndck/blob/main/CHANGELOG.md"
+
+[project.scripts]
+
+[tool.poetry]
+package-mode = true
+packages = [
+    {include = "argparse_formatter"},
+]
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib"
+testpaths = [ "pwndck", "test" ]
+markers = [
+	"webtest: tests requiring internet access",
+	"always_run: default config.py marker for universal tests",
+	"all: marker on every test",
+]
+pythonpath = [
+    ".",
+]
+
+[tool.ruff]
+line-length = 79
+indent-width = 4
