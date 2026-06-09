@@ -10,7 +10,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "argparse_formatter"
-version = "1.5"
+version = "1.6"
 description = "Paragraph-preserving formatter for argparse"
 readme = "README.md"
 requires-python = ">=3.9"
