@@ -1,3 +1,5 @@
 #!/bin/sh
 
-pytest
+for interp in `py3versions -s`; do
+    $interp -m pytest;
+done
