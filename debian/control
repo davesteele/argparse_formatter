@@ -1,4 +1,4 @@
-Source: argparse-formatter
+Source: python-argparse-formatter
 Section: python
 Priority: optional
 Maintainer: David Steele <steele@debian.org>

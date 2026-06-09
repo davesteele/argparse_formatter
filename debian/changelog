@@ -1,4 +1,12 @@
-argparse-formatter (1.6-1) unstable; urgency=medium
+python-argparse-formatter (1.6-2) unstable; urgency=medium
+
+  * Rename source package from argparse-formatter to
+    python-argparse-formatter.
+  * Initial Debian release. (Closes: #1139574)
+
+ -- David Steele <steele@debian.org>  Tue, 09 Jun 2026 18:30:20 -0400
+
+argparse-formatter (1.6-1) UNRELEASED; urgency=medium
 
   * Initial Debian release. (Closes: #1139574)
 
