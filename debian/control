@@ -1,0 +1,23 @@
+Source: argparse-formatter
+Section: python
+Priority: optional
+Maintainer: David Steele <steele@debian.org>
+Build-Depends:
+    debhelper-compat (= 13),
+    dh-python,
+    pybuild-plugin-pyproject,
+    python3-all,
+    python3-poetry-core,
+    python3-pytest,
+Standards-Version: 4.5.1
+Homepage: https://github.com/davesteele/argparse_formatter
+Vcs-Browser: https://github.com/davesteele/argparse_formatter/tree/debian
+Vcs-Git: https://github.com/davesteele/argparse_formatter.git -b debian
+
+Package: python3-argparse-formatter
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}
+Description: advanced formatter for argparse
+ This module offers an advanced argparse formatter, ParagraphHelpFormatter,
+ that supports automatic word wrapping, paragraph breaks, and bulleted lists.
