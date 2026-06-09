@@ -1,5 +1,5 @@
-argparse-formatter (1.6-1) UNRELEASED; urgency=medium
+argparse-formatter (1.6-1) unstable; urgency=medium
 
-  * Initial Debian release. (Closes: #XXXXXX)
+  * Initial Debian release. (Closes: #1139574)
 
- -- David Steele <steele@debian.org>  Mon, 08 Jun 2026 19:43:05 -0400
+ -- David Steele <steele@debian.org>  Tue, 09 Jun 2026 16:25:30 -0400
