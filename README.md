@@ -120,3 +120,20 @@ Install
 Install from [PyPI](https://pypi.org/project/argparse-formatter/) with:
 
     pip install argparse-formatter
+
+Or:
+
+    sudo apt install python3-argparse-formatter
+
+To use the formatter:
+
+    from argparse_formatter import ParagraphHelpFormatter
+    
+    ...
+    
+    def parse_args()
+        parser = argparse.ArgumentParser(
+            ...
+            formatter_class=ParagraphHelpFormatter,
+        )
+    ...
