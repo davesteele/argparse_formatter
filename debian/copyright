@@ -3,7 +3,7 @@ Upstream-Name: argparse_formatter
 Source: https://github.com/davesteele/argparse_formatter
 
 Files: *
-Copyright: i2026 David Steele <dsteele@gmail.com>
+Copyright: 2026 David Steele <dsteele@gmail.com>
 License: GPL-2+
 
 Files: debian/*
